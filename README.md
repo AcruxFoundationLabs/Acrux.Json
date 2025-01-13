@@ -10,7 +10,7 @@ This approach makes the serializer able to recognize types of dynamically loaded
 
 ### Usage
 
-Creating an instance of the `EnumConverter` and attaching it to a **Newtonsoft.Json** `JsonSerializerSettings` is necessary:
+Creating an instance of the `EnumConverter` and attaching it to a **Newtonsoft.Json** `JsonSerializerSettings` is necessary
 ```cs
 JsonSerializerSettings jsonSettings = new JsonSerializerSettings
 {
@@ -19,8 +19,8 @@ JsonSerializerSettings jsonSettings = new JsonSerializerSettings
 ```
 
 > [!Caution]
-> The **Newtonsoft.Json** has a problem serializing data whose datatype is `System.Enum` rather than a specific `enum` type.
-> Is necessary to attach a `JsonConverter` attribute.
+> **Newtonsoft.Json** has a problem serializing data whose datatype is `System.Enum` rather than a specific `enum` type.
+> It's necessary to attach a `JsonConverter` attribute.
 > ```cs
 > [JsonConverter(typeof(Acrux.Json.EnumConverter))]
 > public Enum? MyProperty { get; set; }
