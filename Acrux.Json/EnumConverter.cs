@@ -45,16 +45,19 @@ public class EnumConverter : StringEnumConverter
 
 		if (value is Enum enumValue)
 		{
-			Type enumType = value.GetType();
-			string partType = enumType.AssemblyQualifiedName ?? throw new JsonSerializationException("Enum type's assembly-qualified name is null.");
-			string partValue = enumValue.ToString();
-			string serialized = $"{partType}@{partValue}";
-
-			writer.WriteValue(serialized);
+			writer.WriteValue(GetSerializedValue(enumValue));
 		}
 		else
 		{
 			throw new JsonSerializationException("Expected an enum value.");
 		}
+	}
+
+	public string GetSerializedValue(Enum value)
+	{
+		Type enumType = value.GetType();
+		string partType = enumType.AssemblyQualifiedName ?? throw new JsonSerializationException("Enum type's assembly-qualified name is null.");
+		string partValue = value.ToString();
+		return $"{partType}@{partValue}";
 	}
 }
